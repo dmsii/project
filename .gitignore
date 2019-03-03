@@ -1,0 +1,12 @@
+*.pyc
+*~
+__pycache__
+db.sqlite3
+.env
+
+settings/
+apps/blog/migrations/
+apps/flatpage/migrations/
+static/static/
+static/media/
+.DS_Store
