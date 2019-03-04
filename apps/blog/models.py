@@ -13,9 +13,9 @@ class Post(models.Model):
     title = models.CharField(max_length=200, null = True, default=lorem_default)
     description = models.CharField(max_length=400, null=True, default=lorem_default)
     tags = TaggableManager(blank=True)
-    url = models.URLField(default="#")
     image = models.ImageField(upload_to = 'blog/img/', null = True)
-    text = models.TextField(null=True, default=lorem_default)
+    link = models.URLField()
+    text = models.TextField(null=True, blank=True, default=lorem_default)
     slug = models.SlugField(unique=True)
     published_date = models.DateTimeField(default=timezone.now)
 
