@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+from taggit.managers import TaggableManager
+
 
 # Create your models here.
 class Post(models.Model):
@@ -9,7 +11,9 @@ class Post(models.Model):
         return "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eos laboriosam et eius."
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, null = True, default=lorem_default)
-    description = models.CharField(max_length=200, null=True, default=lorem_default)
+    description = models.CharField(max_length=400, null=True, default=lorem_default)
+    tags = TaggableManager(blank=True)
+    url = models.URLField(default="#")
     image = models.ImageField(upload_to = 'blog/img/', null = True)
     text = models.TextField(null=True, default=lorem_default)
     slug = models.SlugField(unique=True)

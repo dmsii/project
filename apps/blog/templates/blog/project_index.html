@@ -13,14 +13,16 @@
 	<section class="flex-column align-center pysm">
 		{% for p in blog.project %}
 		<article class="wrapper768 pysm">
-			<a class="col-4" href="#" target="_blank"><img src="{{MEDIA_URL}}{{p.image.url}}" alt=""></a>
+			<a class="col-4" href="{{p.url}}" target="_blank"><img src="{{MEDIA_URL}}{{p.image.url}}" alt=""></a>
 			<section class="col-8">
-				<a href="#" target="_blank"><h1 class="title">Video Playlist</h1></a>
-				<p class="desc highlight">{{p.published_date}}</p>
-				<p class="desc">In 2015, I founded Atomic Squirrel, a company that specialized in helping new startups get off the ground. In 2016, Atomic Squirrel merged with another company called Phoenix DevOps to become Gruntwork.</p>
+				<a href="{{p.url}}" target="_blank"><h1 class="title">Video Playlist</h1></a>
+				<p class="desc">{{p.description}}</p>
+				{% if p.tags.names %}
+				<p class="desc sm highlight">Tags: {{p.tags.names|join:", "}}</p>
+				{% endif %}
 			</section>
 		</article>
-		<div class="wrapper768 pymd">
+		<div class="wrapper768 pysm">
 			<hr class="line"><hr class="circle">
 		</div>
 		{% endfor %}
